@@ -1,0 +1,8 @@
+black
+ruff
+mypy
+pytest
+pre-commit
+build
+setuptools
+wheel

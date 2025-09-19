@@ -1,0 +1,30 @@
+{
+  "name": "py-dev",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "username": "vscode"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "charliermarsh.ruff",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false,
+        "editor.formatOnSave": true,
+        "ruff.enable": true,
+        "ruff.organizeImports": true
+      }
+    }
+  },
+  "postCreateCommand": "bash -lc 'python -m venv .venv && source .venv/bin/activate && pip install -U pip && if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi && pre-commit install || true'",
+  "remoteUser": "vscode"
+}
